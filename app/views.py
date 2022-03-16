@@ -97,6 +97,9 @@ def home(request):
 def login(request):
     return render(request,'app/login.html')
 
+def login_req(request):
+    return render(request,'app/login.php')
+
 def services(request):
     return render(request,'app/services.html')
 
