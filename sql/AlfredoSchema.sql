@@ -4,8 +4,8 @@
 
 ********************/
 
-CREATE TABLE IF NOT EXISTS customers (
- customerid VARCHAR(16) PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS customer (
+ id VARCHAR(16) PRIMARY KEY,
  password VARCHAR(64) NOT NULL,
  first_name VARCHAR(64) NOT NULL,
  last_name VARCHAR(64) NOT NULL,
