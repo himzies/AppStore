@@ -21,12 +21,12 @@ def database(request):
     return render(request,'app/database.html',result_dict)
 
 # Create your views here.
-def view(request, pork):
+def view(request, id):
     """Shows the main page"""
     
     ## Use raw query to get a customer
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM customer WHERE id = %s", [pork])
+        cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
         user = cursor.fetchone()
     result_dict = {'cust': user}
 
