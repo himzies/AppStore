@@ -11,15 +11,37 @@ body {
   text-align: center;
   color: #FF5733
 }
+
+        /* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+}
+
+/* Left and right column */
+.column.side {
+  width: 25%;
+}
+
+/* Middle column */
+.column.middle {
+  width: 75%;
+}
 </style>
 </head>
 <body>
     <div class="header">
     <h1>Welcome to Alfredo &#128516;</h1>
     </div>
-    <div>
-    <a href="login">Login Here</a><br>
+    <div class="column side">
+    <h2>Links</h2>
+        <a href="login">Login Here</a><br>
     <a href="add">Register Here</a><br>
-    </div>
+    <p>oh yeah</p>
+  </div>
+     <div class="column middle">
+    <h2>About us</h2>
+    <p>Juliette, Himzies, YY, Nicole HUAT</p>
+  </div>
 </body>
 </html>
