@@ -9,11 +9,11 @@ def database(request):
     if request.POST:
         if request.POST['action'] == 'delete':
             with connection.cursor() as cursor:
-                cursor.execute("DELETE FROM users WHERE userid = %s", [request.POST['id']])
+                cursor.execute("DELETE FROM customer WHERE id = %s", [request.POST['id']])
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM users ORDER BY userid")
+        cursor.execute("SELECT * FROM customer ORDER BY id")
         users = cursor.fetchall()
 
     result_dict = {'records': users}
@@ -26,7 +26,7 @@ def view(request, id):
     
     ## Use raw query to get a customer
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM users WHERE userid = %s", [id])
+        cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
         user = cursor.fetchone()
     result_dict = {'cust': user}
 
@@ -42,13 +42,13 @@ def add(request):
         ## Check if userid is already in the table
         with connection.cursor() as cursor:
 
-            cursor.execute("SELECT * FROM users WHERE userid = %s", [request.POST['userid']])
+            cursor.execute("SELECT * FROM customer WHERE id = %s", [request.POST['id']])
             user = cursor.fetchone()
             ## No user with same id
             if user == None:
                 ##TODO: date validation
-                cursor.execute("INSERT INTO users VALUES (%s, %s, %s, %s, %s, %s, %s)"
-                        , [request.POST['userid'], request.POST['password'], request.POST['first_name'],
+                cursor.execute("INSERT INTO customer VALUES (%s, %s, %s, %s, %s, %s, %s)"
+                        , [request.POST['id'], request.POST['password'], request.POST['first_name'],
                            request.POST['last_name'] , request.POST['gender'], request.POST['email_address'], request.POST['address'] ])
                 return redirect('index')    
             else:
@@ -69,7 +69,7 @@ def edit(request, id):
 
     # fetch the object related to passed id
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM users WHERE userid = %s", [id])
+        cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
         obj = cursor.fetchone()
 
     status = ''
@@ -78,11 +78,11 @@ def edit(request, id):
     if request.POST:
         ##TODO: date validation
         with connection.cursor() as cursor:
-            cursor.execute("UPDATE users SET password = %s, first_name = %s, last_name = %s, gender = %s, email = %s, address = %s WHERE userid = %s"
+            cursor.execute("UPDATE customer SET password = %s, first_name = %s, last_name = %s, gender = %s, email = %s, address = %s WHERE id = %s"
                     , [request.POST['password'], request.POST['first_name'], request.POST['last_name'],
                         request.POST['gender'] , request.POST['email'], request.POST['address'], id ])
             status = 'User edited successfully!'
-            cursor.execute("SELECT * FROM users WHERE userid = %s", [id])
+            cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
             obj = cursor.fetchone()
 
 
