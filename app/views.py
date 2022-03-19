@@ -109,7 +109,7 @@ def login(request):
                 
     context["status"] = status
     
-    return render(request,'app/login.html')
+    return render(request,'app/login.html', context)
 
 def services(request):
     return render(request,'app/services.html')
