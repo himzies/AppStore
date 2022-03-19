@@ -103,6 +103,7 @@ def login(request):
             customers = cursor.fetchall()
         for row in customers:
             if row[0] == request.POST["user"] and row[1] == request.POST["user_pass"]:
+                status = "Login Successful"
                 return redirect("services")
             else:
                 status = "Wrong Username or Password"
