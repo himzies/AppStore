@@ -1,39 +1,15 @@
 <html>
-  <head>
-    <title>Login Form</title>
-  </head>
-  <body>
-    <center>
-      <h3>Login Here</h3>
-        <table>
-          <tr>
-            <td>Username:</td>
-            <td>
-              <input type="text" name="user">
-            </td>
-          </tr>
-          <tr>
-            <td>Password:</td>
-            <td>
-              <input type="password" name="user_pass">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              {% if cust.0 == "user" && cust.1 == "user_pass" %}
-              <a href="services"><button>Login</button></a>
-              {$ else %}
-              <a href="error"><button>Login</button></a>
-              {% endif %}
-            </td>
-            <td>
-              Not a member yet? <a href="add">Register Here</a>  
-            </td>
-          </tr>
-        </table>
-      <form>
-        <br><input type="button" value="Back to Home" onclick="history.back()">
-      </form>
-    </center>
-  </body>
+<body>
+
+<h1>Login Form</h1>
+
+<form action="service" method="post">
+  <label for="user">Username:</label>
+  <input type="text" id="user" name="user"><br><br>
+  <label for="user_pass">Password:</label>
+  <input type="password" id="user_pass" name="user_pass"><br><br>
+  <input type="submit" value="Submit">
+</form>
+  <p> Not a member yet? <a href="add">Register Here</a> </p>
+</body>
 </html>
