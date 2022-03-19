@@ -5,7 +5,7 @@
   <a href="home">Back to Home</a>
   <p style="color:red">{{ status|safe }}</p>
   <form method="post">
-    {$ csrf_token %}
+    {% csrf_token %}
     <label for="user">Username:</label>
     <input type="text" id="user" name="user"><br><br>
     <label for="user_pass">Password:</label>
