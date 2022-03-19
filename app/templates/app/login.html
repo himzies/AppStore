@@ -20,7 +20,10 @@
           </tr>
           <tr>
             <td>
+              {% if cust.0 == "user" && cust.1 == "user_pass" %}
               <a href="services"><button>Login</button></a>
+              {$ else %}
+              <a href="error"><button>Login</button></a>
             </td>
             <td>
               Not a member yet? <a href="add">Register Here</a>  
