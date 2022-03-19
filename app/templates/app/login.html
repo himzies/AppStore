@@ -2,14 +2,16 @@
 <body>
 
 <h1>Login Form</h1>
-
-<form action="service" method="post">
-  <label for="user">Username:</label>
-  <input type="text" id="user" name="user"><br><br>
-  <label for="user_pass">Password:</label>
-  <input type="password" id="user_pass" name="user_pass"><br><br>
-  <input type="submit" value="Submit">
-</form>
+  <a href="home">Back to Home</a>
+  <p style="color:red">{{ status|safe }}</p>
+  <form action="service" method="post">
+    {$ csrf_token %}
+    <label for="user">Username:</label>
+    <input type="text" id="user" name="user"><br><br>
+    <label for="user_pass">Password:</label>
+    <input type="password" id="user_pass" name="user_pass"><br><br>
+    <button type="submit" value="login">Login</button>
+  </form>
   <p> Not a member yet? <a href="add">Register Here</a> </p>
 </body>
 </html>
