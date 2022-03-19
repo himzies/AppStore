@@ -95,10 +95,19 @@ def home(request):
     return render(request,'app/home.html')
 
 def login(request):
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM customer")
-        obj = cursor.fetchall()
-    result_dict = {'cust': customer}
+    context = {}
+    status = ""
+    if request.POST:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT id, password FROM customer")
+            customers = cursor.fetchall()
+        for row in customers:
+            if row[0] == request.POST["user"] and row[1] == request.POST["user_pass"]:
+                return redirect("services")
+            else:
+                status = "Wrong Username or Password"
+                
+    context["status"] = status
     
     return render(request,'app/login.html')
 
