@@ -95,10 +95,12 @@ def home(request):
     return render(request,'app/home.html')
 
 def login(request):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM customer")
+        obj = cursor.fetchall()
+    result_dict = {'cust': customer}
+    
     return render(request,'app/login.html')
-
-def login_req(request):
-    return render(request,'app/login.php')
 
 def services(request):
     return render(request,'app/services.html')
