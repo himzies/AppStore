@@ -50,7 +50,7 @@ def add(request):
                 cursor.execute("INSERT INTO customer VALUES (%s, %s, %s, %s, %s, %s, %s)"
                         , [request.POST['id'], request.POST['password'], request.POST['first_name'],
                            request.POST['last_name'] , request.POST['gender'], request.POST['email_address'], request.POST['address'] ])
-                return redirect('index')    
+                return redirect('database')    
             else:
                 status = 'User with ID %s already exists' % (request.POST['userid'])
 
@@ -104,7 +104,7 @@ def login(request):
         for row in customers:
             if row[0] == request.POST["user"] and row[1] == request.POST["user_pass"]:
                 status = "Login Successful"
-                return redirect("services")
+                return redirect('services')
             else:
                 status = "Wrong Username or Password"
                 
