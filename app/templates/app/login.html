@@ -4,7 +4,7 @@
 <h1>Login Form</h1>
   <a href="home">Back to Home</a>
   <p style="color:red">{{ status|safe }}</p>
-  <form action="service" method="post">
+  <form method="post">
     {$ csrf_token %}
     <label for="user">Username:</label>
     <input type="text" id="user" name="user"><br><br>
