@@ -113,23 +113,8 @@ def login(request):
     context["status"] = status
     return render(request,'app/login.html', context)
 
-'''def login_req(request):
-    context = {}
-    status = ""
-    if request.POST:
-        with connection.cursor() as cursor:
-            cursor.execute("SELECT id, password FROM customer")
-            customers = cursor.fetchall()
-        for row in customers:
-            if row[0] == request.POST["user"] and row[1] == request.POST["user_pass"]:
-                status = "Login Successful"
-                return redirect('services')
-            else:
-                status = "Wrong Username or Password"
-                
-    context["status"] = status
-    
-    return render(request,'app/login.php', context)'''
+def login_req(request):
+    return render(request,'app/login.php', context)
 
 def services(request):
     return render(request,'app/services.html')
