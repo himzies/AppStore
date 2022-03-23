@@ -34,7 +34,7 @@ body {
         </thead>
         {% for exp in expert %}
         <tr>
-            <td> {{ exp.0 }} </td>
+            <td> <a href="job_request/{{exp.0}}">{{ exp.0 }}</a></td>
             <td> {{ exp.1 }} </td>
         </tr>
         {% endfor %}
