@@ -161,4 +161,4 @@ def job_req(request, expertise):
         cursor.execute("SELECT * FROM provider WHERE %s = expertise", [expertise])
         provider = cursor.fetchall()
     result_dict = {'prov': provider}
-    return render(request,'app/job_request.html', result_dict)
+    return render(request,'app/job_req.html', result_dict)
