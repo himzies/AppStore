@@ -106,7 +106,7 @@ def login(request):
         else:
             if customers[1] == request.POST["user_pass"]:
                 status = "Login successful."
-                return redirect('services')
+                return redirect('services', request.POST["user"])
             else:
                 status = "Login failed, wrong password."
                 
@@ -116,7 +116,7 @@ def login(request):
 def login_req(request):
     return render(request,'app/login.php', context)
 
-def services(request):
+def services(request, id):
     return render(request,'app/services.html')
 
 
