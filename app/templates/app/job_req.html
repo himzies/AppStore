@@ -1,0 +1,43 @@
+<html>
+<head>
+<style>
+table {
+  border-collapse: collapse;
+  width: 70%;
+}
+
+th, td {
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #D3EAFF;}
+  
+th {
+  background-color: #43408F;
+  color: white;
+}
+  
+body {
+  font-family: Helvetica, sans-serif;
+}
+  
+</style>
+</head>
+<body>
+    <h2>&#127969 Providers in Cleaning &#129529</h2>
+    <br/><br/>
+    <a href="cleaning">Back</a><br>
+    <table border=1>
+        <thead>
+            <th>Provider Name</th>
+            <th>Gender</th>
+        </thead>
+        {% for provider in prov %}
+        <tr>
+            <td> {{ provider.2 }} {{provider.3}} </td>
+            <td> {{ provider.4 }} </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
