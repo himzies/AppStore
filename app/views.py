@@ -113,7 +113,7 @@ def login(request):
     context["status"] = status
     return render(request,'app/login.html', context)
 
-def login_req(request):
+'''def login_req(request):
     context = {}
     status = ""
     if request.POST:
@@ -129,7 +129,7 @@ def login_req(request):
                 
     context["status"] = status
     
-    return render(request,'app/login.php', context)
+    return render(request,'app/login.php', context)'''
 
 def services(request):
     return render(request,'app/services.html')
