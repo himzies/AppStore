@@ -117,7 +117,10 @@ def login_req(request):
     return render(request,'app/login.php', context)
 
 def services(request, id):
-    return render(request,'app/services.html')
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
+        cust = cursor.fetchone()
+    return render(request,'app/services.html', cust)
 
 def cleaning(request):
     """Shows the main page"""
