@@ -116,10 +116,8 @@ def login(request):
 def login_req(request):
     return render(request,'app/login.php', context)
 
-def services(request, id, service):
-    redirect("%s", service, id)
+def services(request, id):
     return render(request,'app/services.html')
-
 
 def cleaning(request):
     """Shows the main page"""
