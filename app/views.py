@@ -116,7 +116,8 @@ def login(request):
 def login_req(request):
     return render(request,'app/login.php', context)
 
-def services(request, id):
+def services(request, id, service):
+    redirect("%s", service, id)
     return render(request,'app/services.html')
 
 
