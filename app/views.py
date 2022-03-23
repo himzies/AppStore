@@ -122,7 +122,7 @@ def services(request, id):
         cust = cursor.fetchone()
     return render(request,'app/services.html', cust)
 
-def cleaning(request):
+def cleaning(request, id):
     """Shows the main page"""
     
     ## Use raw query to get a customer
@@ -133,7 +133,7 @@ def cleaning(request):
 
     return render(request,'app/cleaning.html',result_dict)
 
-def pet_care(request):
+def pet_care(request, id):
     """Shows the main page"""
     
     ## Use raw query to get a customer
@@ -144,7 +144,7 @@ def pet_care(request):
 
     return render(request,'app/pet_care.html',result_dict)
 
-def tuition(request):
+def tuition(request, id):
     """Shows the main page"""
     
     ## Use raw query to get a customer
