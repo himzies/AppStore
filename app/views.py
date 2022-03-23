@@ -155,3 +155,8 @@ def tuition(request, id):
     result_dict = {'expert': expertise}
 
     return render(request,'app/tuition.html',result_dict)
+
+def job_req(request, expertise):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM provider WHERE %s = expertise", [expertise])
+    return render(request,'app/job_request.html',result_dict)
