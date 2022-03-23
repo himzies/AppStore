@@ -31,4 +31,5 @@ urlpatterns = [
     path('services/cleaning/<str:id>', app.views.cleaning, name='cleaning'),
     path('services/pet_care/<str:id>', app.views.pet_care, name='pet_care'),
     path('services/tuition/<str:id>', app.views.tuition, name='tuition'),
+    path('job_req/<str:expertise>', app.views.job_req, name='job_req')
 ]
