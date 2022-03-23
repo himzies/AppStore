@@ -28,7 +28,7 @@ urlpatterns = [
     path('', app.views.home, name='home'),
     path('login', app.views.login, name='login'),
     path('services/<str:id>', app.views.services, name='services'),
-    path('cleaning', app.views.cleaning, name='cleaning'),
-    path('pet_care', app.views.pet_care, name='pet_care'),
-    path('tuition', app.views.tuition, name='tuition'),
+    path('cleaning/<str:id>', app.views.cleaning, name='cleaning'),
+    path('pet_care/<str:id>', app.views.pet_care, name='pet_care'),
+    path('tuition/<str:id>', app.views.tuition, name='tuition'),
 ]
