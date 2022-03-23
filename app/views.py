@@ -132,7 +132,7 @@ def cleaning(request, id):
         expertise = cursor.fetchall()
     result_dict = {'expert': expertise}
 
-    return render(request,'app/cleaning.html',result_dict)
+    return render(request,'app/cleaning.html', result_dict)
 
 def pet_care(request, id):
     """Shows the main page"""
@@ -143,7 +143,7 @@ def pet_care(request, id):
         expertise = cursor.fetchall()
     result_dict = {'expert': expertise}
 
-    return render(request,'app/pet_care.html',result_dict)
+    return render(request,'app/pet_care.html', result_dict)
 
 def tuition(request, id):
     """Shows the main page"""
@@ -154,9 +154,11 @@ def tuition(request, id):
         expertise = cursor.fetchall()
     result_dict = {'expert': expertise}
 
-    return render(request,'app/tuition.html',result_dict)
+    return render(request,'app/tuition.html', result_dict)
 
 def job_req(request, expertise):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM provider WHERE %s = expertise", [expertise])
-    return render(request,'app/job_request.html',result_dict)
+        provider = cursor.fetchall()
+    result_dict = {'prov': provider}
+    return render(request,'app/job_request.html', result_dict)
