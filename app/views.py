@@ -119,8 +119,9 @@ def login_req(request):
 def services(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
-        cust = cursor.fetchone()
-    return render(request,'app/services.html', cust)
+        customer = cursor.fetchone()
+        result_dict = {'cust': customer}
+    return render(request,'app/services.html', result_dict)
 
 def cleaning(request, id):
     """Shows the main page"""
