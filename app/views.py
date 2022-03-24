@@ -116,7 +116,7 @@ def login(request):
 def login_req(request):
     return render(request,'app/login.php', context)
 
-def services(request, id):
+def services(id, request):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
         customer = cursor.fetchone()
@@ -171,3 +171,11 @@ def job_req(request, id, expertise):
         customer = cursor.fetchone()
     
     return render(request,'app/job_req.html', {'prov': provider, 'cust': customer})
+
+def job_cat(request, id, service):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM %s", [service])
+        category = cursor.fetchall()
+        result_dict = {'cat': category}
+    
+    return render(request,'app/job_req.html', result_dict)
