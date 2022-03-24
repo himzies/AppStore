@@ -33,5 +33,6 @@ psql ${URI} -f sql/AlfredoSchema.sql
 psql ${URI} -f sql/AlfredoCustomers.sql
 psql ${URI} -f sql/AlfredoProviders.sql
 psql ${URI} -f sql/JobCategories.sql
+psql ${URI} -f sql/CleaningJobs.sql
 psql ${URI} -f sql/TuitionJobs.sql
 psql ${URI} -f sql/PetCareJobs.sql
