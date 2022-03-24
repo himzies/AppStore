@@ -29,5 +29,5 @@ urlpatterns = [
     path('login', app.views.login, name='login'),
     path('<str:id>/services', app.views.services, name='services'),
     path('<str:id>/<str:service>', app.views.job_cat, name='job_cat'),
-    path('<str:id>/job_req/<str:expertise>', app.views.job_req, name='job_req')
+    path('<str:id>/<str:service>/<str:expertise>', app.views.job_req, name='job_req')
 ]
