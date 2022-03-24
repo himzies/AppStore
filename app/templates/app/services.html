@@ -1,8 +1,8 @@
 <html>
 <body>
     <h1>Hello {{cust.2}}. What services are you looking for today?</h1>
-    <a href="cleaning/{{cust.0}}">Cleaning</a><br>
-    <a href="tuition/{{cust.0}}">Tuition</a><br>
-    <a href="pet_care/{{cust.0}}">Pet Care</a><br><br>
+    {% for category in cat %}
+        <a href="job_cat/{{category.0}}">{{category.0}}</a><br>
+    {% endfor %}
 </body>
 </html>
