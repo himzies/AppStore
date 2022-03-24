@@ -130,9 +130,13 @@ def cleaning(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM cleaning")
         expertise = cursor.fetchall()
-    result_dict = {'expert': expertise}
+    result_dict1 = {'expert': expertise}
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
+        customer = cursor.fetchone()
+    result_dict2 = {'cust': customer}
 
-    return render(request,'app/cleaning.html', result_dict)
+    return render(request,'app/cleaning.html', result_dict1, result_dict2)
 
 def pet_care(request, id):
     """Shows the main page"""
@@ -141,9 +145,13 @@ def pet_care(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM pet_care")
         expertise = cursor.fetchall()
-    result_dict = {'expert': expertise}
+    result_dict1 = {'expert': expertise}
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
+        customer = cursor.fetchone()
+    result_dict2 = {'cust': customer}
 
-    return render(request,'app/pet_care.html', result_dict)
+    return render(request,'app/pet_care.html', result_dict1, result_dict2)
 
 def tuition(request, id):
     """Shows the main page"""
@@ -152,9 +160,13 @@ def tuition(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM tuition")
         expertise = cursor.fetchall()
-    result_dict = {'expert': expertise}
+    result_dict1 = {'expert': expertise}
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
+        customer = cursor.fetchone()
+    result_dict2 = {'cust': customer}
 
-    return render(request,'app/tuition.html', result_dict)
+    return render(request,'app/tuition.html', result_dict1, result_dict2)
 
 def job_req(request, id, expertise):
     with connection.cursor() as cursor:
