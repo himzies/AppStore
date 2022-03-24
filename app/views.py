@@ -174,9 +174,9 @@ def job_req(request, id, expertise):
     
     return render(request,'app/job_req.html', {'prov': provider, 'cust': customer})
 
-def job_cat(request, service, id):
+def job_cat(request, id, slug):
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM %s", [service.lower()])
+        cursor.execute("SELECT * FROM %s", [slug])
         category = cursor.fetchall()
         result_dict = {'cat': category}
     
