@@ -176,7 +176,7 @@ def job_req(request, id, expertise):
 
 def job_cat(request, id, service):
     with connection.cursor() as cursor:
-        cursor.execute('SELECT * FROM ' + [service])
+        cursor.execute('SELECT * FROM ' + service)
         category = cursor.fetchall()
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
