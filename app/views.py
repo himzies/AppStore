@@ -176,8 +176,10 @@ def job_req(request, id, expertise):
 
 def job_cat(request, id, service):
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM cleaning")
+        cursor.execute('SELECT * FROM cleaning')
         category = cursor.fetchall()
-        result_dict = {'cat': category}
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
+        customer = cursor.fetchone()
     
-    return render(request,'app/job_cat.html', result_dict)
+    return render(request,'app/job_cat.html', {'cat': category, 'cust': customer})
