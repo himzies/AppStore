@@ -170,4 +170,4 @@ def job_req(request, id, expertise):
         cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
         customer = cursor.fetchone()
     
-    return render(request,'app/job_req.html', {'expert': expertise, 'cust': customer})
+    return render(request,'app/job_req.html', {'prov': provider, 'cust': customer})
