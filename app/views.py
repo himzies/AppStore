@@ -156,7 +156,7 @@ def tuition(request, id):
 
     return render(request,'app/tuition.html', result_dict)
 
-def job_req(request, expertise):
+def job_req(request, id, expertise):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM provider WHERE %s = expertise", [expertise])
         provider = cursor.fetchall()
