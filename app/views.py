@@ -176,7 +176,7 @@ def job_req(request, id, expertise):
 
 def job_cat(request, id, service):
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM cleaning"])
+        cursor.execute("SELECT * FROM cleaning")
         category = cursor.fetchall()
         result_dict = {'cat': category}
     
