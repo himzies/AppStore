@@ -174,7 +174,7 @@ def job_req(request, id, expertise):
     
     return render(request,'app/job_req.html', {'prov': provider, 'cust': customer})
 
-def job_cat(request, id, service):
+def job_cat(request, service, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM %s", [service.lower()])
         category = cursor.fetchall()
