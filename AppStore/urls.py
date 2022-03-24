@@ -28,12 +28,6 @@ urlpatterns = [
     path('', app.views.home, name='home'),
     path('login', app.views.login, name='login'),
     path('<str:id>/services', app.views.services, name='services'),
-    path('services/cleaning/<str:id>', app.views.cleaning, name='cleaning'),
-    path('services/pet_care/<str:id>', app.views.pet_care, name='pet_care'),
-    path('services/tuition/<str:id>', app.views.tuition, name='tuition'),
     path('<str:id>/job_cat/<str:service>', app.views.job_cat, name='job_cat'),
-    path('services/cleaning/job_req/<str:id>/<str:expertise>', app.views.job_req, name='job_req'),
-    path('services/pet_care/job_req/<str:id>/<str:expertise>', app.views.job_req, name='job_req'),
-    path('services/tuition/job_req/<str:id>/<str:expertise>', app.views.job_req, name='job_req'),
     path('<str:id>/job_cat/job_req/<str:expertise>', app.views.job_req, name='job_req')
 ]
