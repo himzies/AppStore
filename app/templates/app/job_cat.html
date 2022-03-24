@@ -1,0 +1,43 @@
+<html>
+<head>
+<style>
+table {
+  border-collapse: collapse;
+  width: 70%;
+}
+
+th, td {
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #D3EAFF;}
+  
+th {
+  background-color: #43408F;
+  color: white;
+}
+  
+body {
+  font-family: Helvetica, sans-serif;
+}
+  
+</style>
+</head>
+<body>
+    <h2>Services in Cleaning</h2>
+    <br/><br/>
+    <input type="button" value="Back" onclick="history.back()">
+    <table border=1>
+        <thead>
+            <th>Provider Name</th>
+            <th>Gender</th>
+        </thead>
+        {% for category in cat %}
+        <tr>
+            <td> {{category.0}} </td>
+            <td> {{provider.1}} </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
