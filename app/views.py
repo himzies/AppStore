@@ -130,11 +130,9 @@ def cleaning(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM cleaning")
         expertise = cursor.fetchall()
-    result_dict1 = {'expert': expertise}
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
         customer = cursor.fetchone()
-    result_dict2 = {'cust': customer}
 
     return render(request,'app/cleaning.html', {'expert': expertise, 'cust': customer})
 
@@ -145,11 +143,9 @@ def pet_care(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM pet_care")
         expertise = cursor.fetchall()
-    result_dict1 = {'expert': expertise}
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
         customer = cursor.fetchone()
-    result_dict2 = {'cust': customer}
 
     return render(request,'app/pet_care.html', {'expert': expertise, 'cust': customer})
 
@@ -160,11 +156,9 @@ def tuition(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM tuition")
         expertise = cursor.fetchall()
-    result_dict1 = {'expert': expertise}
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
         customer = cursor.fetchone()
-    result_dict2 = {'cust': customer}
 
     return render(request,'app/tuition.html', {'expert': expertise, 'cust': customer})
 
@@ -172,10 +166,8 @@ def job_req(request, id, expertise):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM provider WHERE %s = expertise", [expertise])
         provider = cursor.fetchall()
-    result_dict1 = {'prov': provider}
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
         customer = cursor.fetchone()
-    result_dict2 = {'cust': customer}
     
     return render(request,'app/job_req.html', {'expert': expertise, 'cust': customer})
