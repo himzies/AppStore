@@ -120,8 +120,10 @@ def services(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
         customer = cursor.fetchone()
-        result_dict = {'cust': customer}
-    return render(request,'app/services.html', result_dict)
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM job_category")
+        category = cursor.fetchall()
+    return render(request,'app/services.html', {'cust': customer, 'cat': category})
 
 def cleaning(request, id):
     """Shows the main page"""
