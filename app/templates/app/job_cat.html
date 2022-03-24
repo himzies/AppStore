@@ -29,13 +29,13 @@ body {
     <input type="button" value="Back" onclick="history.back()">
     <table border=1>
         <thead>
-            <th>Provider Name</th>
-            <th>Gender</th>
+            <th>Expertise</th>
+            <th>Description</th>
         </thead>
         {% for category in cat %}
         <tr>
             <td> {{category.0}} </td>
-            <td> {{provider.1}} </td>
+            <td> {{category.1}} </td>
         </tr>
         {% endfor %}
     </table>
