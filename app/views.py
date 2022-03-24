@@ -125,43 +125,6 @@ def services(request, id):
         category = cursor.fetchall()
     return render(request,'app/services.html', {'cust': customer, 'cat': category})
 
-def cleaning(request, id):
-    """Shows the main page"""
-    
-    ## Use raw query to get a customer
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM cleaning")
-        expertise = cursor.fetchall()
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
-        customer = cursor.fetchone()
-
-    return render(request,'app/cleaning.html', {'expert': expertise, 'cust': customer})
-
-def pet_care(request, id):
-    """Shows the main page"""
-    
-    ## Use raw query to get a customer
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM pet_care")
-        expertise = cursor.fetchall()
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
-        customer = cursor.fetchone()
-
-    return render(request,'app/pet_care.html', {'expert': expertise, 'cust': customer})
-
-def tuition(request, id):
-    """Shows the main page"""
-    
-    ## Use raw query to get a customer
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM tuition")
-        expertise = cursor.fetchall()
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
-        customer = cursor.fetchone()
-
     return render(request,'app/tuition.html', {'expert': expertise, 'cust': customer})
 
 def job_req(request, id, expertise):
@@ -182,4 +145,4 @@ def job_cat(request, id, service):
         cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
         customer = cursor.fetchone()
     
-    return render(request,'app/job_cat.html', {'cat': category, 'cust': customer})
+    return render(request,'app/job_cat.html', {'cat': category, 'cust': customer, 'serv': service})
