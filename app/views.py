@@ -180,4 +180,4 @@ def job_cat(request, id, service):
         category = cursor.fetchall()
         result_dict = {'cat': category}
     
-    return render(request,'app/job_req.html', result_dict)
+    return render(request,'app/job_cat.html', result_dict)
