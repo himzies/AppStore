@@ -6,3 +6,43 @@
     {% endfor %}
 </body>
 </html>
+<html>
+<head>
+<style>
+table {
+  border-collapse: collapse;
+  width: 50%;
+}
+
+th, td {
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #D3EAFF;}
+  
+th {
+  background-color: #43408F;
+  color: white;
+}
+  
+body {
+  font-family: Helvetica, sans-serif;
+}
+  
+</style>
+</head>
+<body>
+    <h2>Hello {{cust.2}}. What services are you looking for today?</h2>
+    <br/><br/>
+    <table border=1>
+        <thead>
+            <th>Job Category</th>
+        </thead>
+        {% for category in cat %}
+        <tr>
+            <td> <a href="job_cat/{{category}}">{{category}}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
