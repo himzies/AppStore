@@ -27,6 +27,7 @@ urlpatterns = [
     path('edit/<str:id>', app.views.edit, name='edit'),
     path('', app.views.home, name='home'),
     path('login', app.views.login, name='login'),
+    path('services', app.views.services, name='services'),
     path('services/<str:id>', app.views.services, name='services'),
     path('services/cleaning/<str:id>', app.views.cleaning, name='cleaning'),
     path('services/pet_care/<str:id>', app.views.pet_care, name='pet_care'),
