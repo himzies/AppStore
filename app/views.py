@@ -172,5 +172,10 @@ def job_req(request, id, expertise):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM provider WHERE %s = expertise", [expertise])
         provider = cursor.fetchall()
-    result_dict = {'prov': provider}
-    return render(request,'app/job_req.html', result_dict)
+    result_dict1 = {'prov': provider}
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
+        customer = cursor.fetchone()
+    result_dict2 = {'cust': customer}
+    
+    return render(request,'app/job_req.html', result_dict1, result_dict2)
