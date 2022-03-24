@@ -164,7 +164,7 @@ def tuition(request, id):
 
     return render(request,'app/tuition.html', {'expert': expertise, 'cust': customer})
 
-def job_req(request, (id, expertise)):
+def job_req(request, id, expertise):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM provider WHERE %s = expertise", [expertise])
         provider = cursor.fetchall()
@@ -174,7 +174,7 @@ def job_req(request, (id, expertise)):
     
     return render(request,'app/job_req.html', {'prov': provider, 'cust': customer})
 
-def job_cat(request, (id, service)):
+def job_cat(request, id, service):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM %s", [service.lower()])
         category = cursor.fetchall()
