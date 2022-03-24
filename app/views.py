@@ -116,7 +116,7 @@ def login(request):
 def login_req(request):
     return render(request,'app/login.php', context)
 
-def services(id, request):
+def services(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
         customer = cursor.fetchone()
