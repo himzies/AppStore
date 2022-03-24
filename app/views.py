@@ -136,7 +136,7 @@ def cleaning(request, id):
         customer = cursor.fetchone()
     result_dict2 = {'cust': customer}
 
-    return render(request,'app/cleaning.html', result_dict1, result_dict2)
+    return render(request,'app/cleaning.html', result_dict1)
 
 def pet_care(request, id):
     """Shows the main page"""
@@ -151,7 +151,7 @@ def pet_care(request, id):
         customer = cursor.fetchone()
     result_dict2 = {'cust': customer}
 
-    return render(request,'app/pet_care.html', result_dict1, result_dict2)
+    return render(request,'app/pet_care.html', result_dict1)
 
 def tuition(request, id):
     """Shows the main page"""
@@ -166,7 +166,7 @@ def tuition(request, id):
         customer = cursor.fetchone()
     result_dict2 = {'cust': customer}
 
-    return render(request,'app/tuition.html', result_dict1, result_dict2)
+    return render(request,'app/tuition.html', result_dict1)
 
 def job_req(request, id, expertise):
     with connection.cursor() as cursor:
@@ -178,4 +178,4 @@ def job_req(request, id, expertise):
         customer = cursor.fetchone()
     result_dict2 = {'cust': customer}
     
-    return render(request,'app/job_req.html', result_dict1, result_dict2)
+    return render(request,'app/job_req.html', result_dict1)
