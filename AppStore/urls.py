@@ -35,4 +35,5 @@ urlpatterns = [
     path('services/cleaning/job_req/<str:id>/<str:expertise>', app.views.job_req, name='job_req'),
     path('services/pet_care/job_req/<str:id>/<str:expertise>', app.views.job_req, name='job_req'),
     path('services/tuition/job_req/<str:id>/<str:expertise>', app.views.job_req, name='job_req'),
+    path('<str:id>/services/job_cat/job_req/<str:expertise>', app.views.job_req, name='job_req')
 ]
