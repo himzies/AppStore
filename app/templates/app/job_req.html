@@ -34,10 +34,23 @@ body {
         </thead>
         {% for provider in prov %}
         <tr>
-            <td> <a href onclick="return confirm('Are you sure you want to select {{provider.2}} {{provider.3}}?');" type="submit" name="action" value="transaction">{{provider.2}} {{provider.3}} </a href> </td>
-            <td> {{provider.4}} </td>
+            <!-- <td> <a href onclick="return confirm('Are you sure you want to select {{provider.2}} {{provider.3}}?');" type="submit" name="action" value="transaction">{{provider.2}} {{provider.3}} </a href> </td> -->
+          <td> <a href onclick= myFunction(); " type="submit" name="action" value="transaction">
+          <td> {{provider.4}} </td>
         </tr>
         {% endfor %}
     </table>
+
+<script>
+function myFunction() {
+  let text = 'Are you sure you want to select {{provider.2}} {{provider.3}}?';
+  if (confirm(text) == true) {
+    continue;
+  } else {
+    break;
+  }
+  document.getElementById("demo").innerHTML = text;
+}
+</script>
 </body>
 </html>
