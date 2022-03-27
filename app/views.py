@@ -161,8 +161,8 @@ def transaction(request, id, person):
             cursor.execute("SELECT * FROM customer WHERE id = %s", [request.POST['id']])
             user = cursor.fetchone()
             cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %s)"
-                        , [request.POST['id'], request.POST['id'], request.POST['first_name'+'last_name'],
-                           request.POST['first_name'+'last_name'], request.POST['address']])
+                        , [request.POST['id'], request.POST['id'], request.POST['first_name'],
+                           request.POST['last_name'], request.POST['address']])
             status = 'Transaction with %s successful' % (request.POST['userid'])
         #with connection.cursor() as cursor:
          #       cursor.execute("SELECT * FROM provider WHERE %s = person", [id])
