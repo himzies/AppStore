@@ -158,8 +158,8 @@ def transaction(request, id, person):
 
     if request.POST:
         with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
-            customer = cursor.fetchone()
+            cursor.execute("SELECT * FROM customer WHERE id = %s", [request.POST['id']])
+            user = cursor.fetchone()
             cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %s)"
                         , [request.POST['id'], request.POST['id'], request.POST['first_name'+'last_name'],
                            request.POST['first_name'+'last_name'], request.POST['address']])
@@ -169,5 +169,5 @@ def transaction(request, id, person):
 
                 status = 'Transaction with %s successful' % (request.POST['userid'])
     context['status'] = status
-    return render(request,'app/transaction.html', {'prov': serviceman, 'cust': customer})
+    return render(request,'app/transaction.html', {'prov': serviceman, 'cust': customer}, context)
     #return render(request, "app/transaction.html", context)
