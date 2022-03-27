@@ -158,7 +158,7 @@ def transaction(request):
 
     if request.POST:
         with connection.cursor() as cursor:
-                cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %s, %s, %s)"
+                cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %s)"
                         , [request.POST['id'], request.POST['id'], request.POST['first_name'+'last_name'],
                            request.POST['first_name'+'last_name'], request.POST['address']])
                 status = 'Transaction with %s successful' % (request.POST['userid'])
