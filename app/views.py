@@ -97,6 +97,9 @@ def home(request):
 def test(request):
     return render(request,'app/test.html')
 
+def bodycss(request):
+    return render(request,'app/body.css')
+
 def login(request):
     context = {}
     status = ""
