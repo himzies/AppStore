@@ -169,4 +169,4 @@ def transaction(request, id, person):
           #      serviceman = cursor.fetchall()
                 
     context['status'] = status
-    return render(request, "app/transaction.html", context)
+    return render(request, "app/transaction.html", {'row': records}, context)
