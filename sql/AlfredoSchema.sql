@@ -37,3 +37,12 @@ CREATE TABLE IF NOT EXISTS provider (
  CREATE TABLE IF NOT EXISTS tuition(
   name VARCHAR(64) PRIMARY KEY,
   descrip VARCHAR(255));
+ 
+CREATE TABLE IF NOT EXISTS transaction (
+ customer_id VARCHAR(16) NOT NULL,
+ provider_id VARCHAR(16) NOT NULL,
+ customer_name VARCHAR(128) NOT NULL,
+ provider_name VARCHAR(128) NOT NULL,
+ address VARCHAR(255) UNIQUE NOT NULL);
+ job VARCHAR(64) NOT NULL, 
+ price DEC(16, 2) NOT NULL); 
