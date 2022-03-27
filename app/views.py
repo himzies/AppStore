@@ -149,3 +149,22 @@ def job_cat(request, id, service):
         customer = cursor.fetchone()
     
     return render(request,'app/job_cat.html', {'cat': category, 'cust': customer, 'serv': service})
+
+#Testing for transaction
+def transact(request):
+    """Shows the main page"""
+    context = {}
+    status = ''
+
+    if request.POST:
+        with connection.cursor() as cursor:
+                cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %s, %s, %s)"
+                        , [request.POST['id'], request.POST['id'], request.POST['first_name'+'last_name'],
+                           request.POST['first_name'+'last_name'], request.POST['address']])
+                status = 'Transaction with %s successful' % (request.POST['userid'])
+                return redirect('home')
+
+
+    context['status'] = status
+ 
+    return render(request, "app/home.html", context)
