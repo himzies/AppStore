@@ -34,8 +34,7 @@ body {
         </thead>
         {% for provider in prov %}
         <tr>
-          
-            <td> <a href onclick="return confirm('Are you sure you want to select {{provider.2}} {{provider.3}}?');" type="submit" name="action" value="edit">{{provider.2}} {{provider.3}} </a href> </td>
+            <td> <a href onclick="return confirm('Are you sure you want to select {{provider.2}} {{provider.3}}?');" type="submit" name="action" value="transaction">{{provider.2}} {{provider.3}} </a href> </td>
             <td> {{provider.4}} </td>
         </tr>
         {% endfor %}
