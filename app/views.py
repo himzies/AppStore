@@ -159,14 +159,14 @@ def transaction(request, id, person):
     if request.POST:
         with connection.cursor() as cursor:
             cursor.execute("SELECT * FROM customer WHERE id = %s", [request.POST['id']])
-            user = cursor.fetchone()
+            #user = cursor.fetchone()
             cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %s)"
-                        , [request.POST['id'], request.POST['id'], request.POST['first_name'],
+                        , [request.POST['id'], request.POST['password'], request.POST['first_name'],
                            request.POST['last_name'], request.POST['address']])
-            #status = 'Transaction with %s successful' % (request.POST['userid'])
+            status = 'Transaction with %s successful' % (request.POST['userid'])
         #with connection.cursor() as cursor:
          #       cursor.execute("SELECT * FROM provider WHERE %s = person", [id])
           #      serviceman = cursor.fetchall()
                 
-    #context['status'] = status
-    return render(request, "app/transaction.html", {'cust': user})
+    context['status'] = status
+    return render(request, "app/transaction.html", context)
