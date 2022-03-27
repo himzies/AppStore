@@ -30,7 +30,7 @@ urlpatterns = [
     path('<str:id>/services', app.views.services, name='services'),
     path('<str:id>/job_cat/<str:service>', app.views.job_cat, name='job_cat'),
     path('<str:id>/job_cat/job_req/<str:expertise>', app.views.job_req, name='job_req'),
-    path('test', app.views.test, name='test')
+    path('test', app.views.test, name='test'),
     #Testing for transaction
     path('transaction', app.views.transaction, name='transaction'),
 ]
