@@ -158,7 +158,7 @@ def transaction(request, id, person):
 
     if request.POST:
         with connection.cursor() as cursor:
-                cursor.execute("SELECT * FROM provider WHERE %s = person", [[first_name] + [last_name]])
+                cursor.execute("SELECT * FROM provider WHERE %s = person", [id])
                 serviceman = cursor.fetchall()
                 cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %s)"
                         , [request.POST['id'], request.POST['id'], request.POST['first_name'+'last_name'],
