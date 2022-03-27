@@ -151,7 +151,7 @@ def job_cat(request, id, service):
     return render(request,'app/job_cat.html', {'cat': category, 'cust': customer, 'serv': service})
 
 #Testing for transaction
-def transact(request):
+def transaction(request):
     """Shows the main page"""
     context = {}
     status = ''
@@ -162,9 +162,9 @@ def transact(request):
                         , [request.POST['id'], request.POST['id'], request.POST['first_name'+'last_name'],
                            request.POST['first_name'+'last_name'], request.POST['address']])
                 status = 'Transaction with %s successful' % (request.POST['userid'])
-                return redirect('home')
+                return redirect('transaction')
 
 
     context['status'] = status
  
-    return render(request, "app/home.html", context)
+    return render(request, "app/transaction.html", context)
