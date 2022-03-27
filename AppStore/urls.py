@@ -33,5 +33,5 @@ urlpatterns = [
     path('test', app.views.test, name='test'),
     path('body.css', app.views.bodycss, name='bodycss'),
     #Testing for transaction
-    path('transaction', app.views.transaction, name='transaction'),
+    path('transaction', app.views.transaction, name='transaction')
 ]
