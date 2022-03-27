@@ -98,7 +98,7 @@ def test(request):
     return render(request,'app/test.html')
 
 def bodycss(request):
-    return render(request,'app/body.css')
+    return render(request,'app/css/body.css')
 
 def login(request):
     context = {}
