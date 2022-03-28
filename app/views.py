@@ -157,13 +157,14 @@ def transaction(request, id, person):
     status = ''
 
     if request.POST:
-        with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM customer WHERE id = %s", [request.POST['id']])
-            #user = cursor.fetchone()
-            cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %s)"
-                        , [request.POST['id'], request.POST['password'], request.POST['first_name'],
-                           request.POST['last_name'], request.POST['address']])
-            status = 'Transaction with %s successful' % (request.POST['userid'])
+        if request.POST['action'] == 'transaction':
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM customer WHERE id = %s", [request.POST['id']])
+                #user = cursor.fetchone()
+                cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %s)"
+                               , [request.POST['id'], request.POST['password'], request.POST['first_name'],
+                                  request.POST['last_name'], request.POST['address']])
+                status = 'Transaction with %s successful' % (request.POST['userid'])
         #with connection.cursor() as cursor:
          #       cursor.execute("SELECT * FROM provider WHERE %s = person", [id])
           #      serviceman = cursor.fetchall()
