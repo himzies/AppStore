@@ -155,7 +155,8 @@ def transaction(request, id):
     """Shows the main page"""
     context = {}
     status = ''
-
+    cursor.execute("SELECT * FROM customer WHERE id = %s", [request.POST['id']])
+    user = cursor.fetchone()
     if request.POST:
         if request.POST['action'] == 'transaction':
             with connection.cursor() as cursor:
@@ -167,8 +168,6 @@ def transaction(request, id):
         #   cursor.execute("SELECT * FROM provider WHERE %s = person", [id])
         #   serviceman = cursor.fetchall()
         
-    cursor.execute("SELECT * FROM customer WHERE id = %s", [request.POST['id']])
-    user = cursor.fetchone()
     context["user"] = user
     context["status"] = status
     return render(request, "app/transaction.html", context)
