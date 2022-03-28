@@ -166,8 +166,8 @@ def transaction(request, id):
                                   request.POST['last_name'], request.POST['address']])
                 status = 'Transaction with %s successful' % (request.POST['userid'])
         #with connection.cursor() as cursor:
-         #       cursor.execute("SELECT * FROM provider WHERE %s = person", [id])
-          #      serviceman = cursor.fetchall()
+        #   cursor.execute("SELECT * FROM provider WHERE %s = person", [id])
+        #   serviceman = cursor.fetchall()
                 
     context['status'] = status
     return render(request, "app/transaction.html", context)
