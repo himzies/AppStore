@@ -43,6 +43,6 @@ CREATE TABLE IF NOT EXISTS transaction (
  provider_id VARCHAR(16) NOT NULL,
  customer_name VARCHAR(128) NOT NULL,
  provider_name VARCHAR(128) NOT NULL,
- address VARCHAR(255) UNIQUE NOT NULL);
+ address VARCHAR(255) UNIQUE NOT NULL,
  job VARCHAR(64) NOT NULL, 
- price DEC(16, 2) NOT NULL); 
+ price DEC(16, 2) NOT NULL);
