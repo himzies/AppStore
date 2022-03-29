@@ -9,12 +9,16 @@
         font-family: 'Lobster', cursive;
         text-align: center;
       }
+      body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: #A2B8A3;
+    }
     </style>
   </head>
 <body>
 
+<a href="/">Back to Home</a>
 <h1>Login Form</h1>
-  <a href="/">Back to Home</a>
   <p style="color:red">{{ status|safe }}</p>
   <form method="post">
     {% csrf_token %}
