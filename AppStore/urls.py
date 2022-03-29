@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('database', app.views.database, name='database'),
     path('add', app.views.add, name='add'),
+    path('add_provider', app.views.add_provider, name='add_provider'),
     path('view/<str:id>', app.views.view, name='view'),
     path('edit/<str:id>', app.views.edit, name='edit'),
     path('', app.views.home, name='home'),
