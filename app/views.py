@@ -20,6 +20,24 @@ def database(request):
 
     return render(request,'app/database.html',result_dict)
 
+def database_provider(request):
+    """Shows the main page"""
+
+    ## Delete provider
+    if request.POST:
+        if request.POST['action'] == 'delete':
+            with connection.cursor() as cursor:
+                cursor.execute("DELETE FROM provider WHERE id = %s", [request.POST['id']])
+
+    ## Use raw query to get all objects
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM provider ORDER BY id")
+        users = cursor.fetchall()
+
+    result_dict = {'records': users}
+
+    return render(request,'app/database_provider.html',result_dict)
+
 # Create your views here.
 def view(request, id):
     """Shows the main page"""
