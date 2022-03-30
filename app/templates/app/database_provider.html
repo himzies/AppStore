@@ -1,0 +1,35 @@
+{% load static %}
+<html>
+<body>
+    <h2>Customers in the App Store</h2>
+    <img src="{% static 'app/images/nus.jpg' %}" width="10%"   alt="NUS logo"/><br/>
+    <a href="/">Homepage</a><br>
+    <a href="add">Register as provider</a>
+    <br/><br/>
+    <table border=1>
+        <thead>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Action</th>
+        </thead>
+        {% for cust in records %}
+        <tr>
+            <td> {{ cust.0 }} </td>
+            <td> {{ cust.2 }} </td>
+            <td> {{ cust.3 }} </td>
+            <td> {{ cust.7 }} </td>
+            <td>
+                <a href="view_provider/{{cust.0}}"><button>View</button></a> | 
+                <a href="edit_provider/{{cust.0}}"><button>Edit</button></a>
+                | 
+                <form method="POST" style="display: inline;">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{cust.5}}"/>
+                <button onclick="return confirm('Are you sure you want to delete {{cust.1}}?');" type="submit" name="action" value="delete">Delete</button> 
+              </form></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
