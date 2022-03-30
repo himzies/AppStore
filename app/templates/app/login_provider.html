@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <style>
+      h1{
+        font-family: 'Lobster', cursive;
+        text-align: center;
+      }
+      body {
+        font-family: 'Quicksand', sans-serif;
+        background-color: #A2B8A3;
+    }
+      div {
+        margin: auto;
+        width: 60%;
+        border: 3px solid black;
+        padding: 10px;
+        text-align: center;
+    }
+    </style>
+  </head>
+<body>
+
+<a href="/">Back to Home</a>
+<h1>Login Form</h1>
+  <div>
+  <p style="color:red;font-weight:bold">{{ status|safe }}</p>
+  <form method="post">
+    {% csrf_token %}
+    <label for="user">Username:</label>
+    <input type="text" id="user" name="user"><br><br>
+    <label for="user_pass">Password:</label>
+    <input type="password" id="user_pass" name="user_pass"><br><br>
+    <button type="submit" value="login">Login</button>
+  </form>
+  <p> Not a member yet? <a href="add_provider">Register as Provider Here</a> </p>
+  </div>
+</body>
+</html>
