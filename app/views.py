@@ -50,6 +50,17 @@ def view(request, id):
 
     return render(request,'app/view.html',result_dict)
 
+def view_provider(request, id):
+    """Shows the main page"""
+    
+    ## Use raw query to get a customer
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM provider WHERE id = %s", [id])
+        user = cursor.fetchone()
+    result_dict = {'cust': user}
+
+    return render(request,'app/view_provider.html',result_dict)
+
 # Create your views here.
 def add(request):
     """Shows the main page"""
@@ -135,6 +146,37 @@ def edit(request, id):
  
     return render(request, "app/edit.html", context)
 
+def edit_provider(request, id):
+    """Shows the main page"""
+
+    # dictionary for initial data with
+    # field names as keys
+    context ={}
+
+    # fetch the object related to passed id
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM provider WHERE id = %s", [id])
+        obj = cursor.fetchone()
+
+    status = ''
+    # save the data from the form
+
+    if request.POST:
+        ##TODO: date validation
+        with connection.cursor() as cursor:
+            cursor.execute("UPDATE provider SET password = %s, first_name = %s, last_name = %s, gender = %s, email = %s, address = %s WHERE id = %s"
+                    , [request.POST['password'], request.POST['first_name'], request.POST['last_name'],
+                        request.POST['gender'] , request.POST['email'], request.POST['address'], id ])
+            status = 'User edited successfully!'
+            cursor.execute("SELECT * FROM provider WHERE id = %s", [id])
+            obj = cursor.fetchone()
+
+
+    context["obj"] = obj
+    context["status"] = status
+ 
+    return render(request, "app/edit_provider.html", context)
+
 def home(request):
     return render(request,'app/home.html')
 
@@ -159,6 +201,25 @@ def login(request):
                 
     context["status"] = status
     return render(request,'app/login.html', context)
+
+def login_provider(request):
+    context = {}
+    status = ""
+    if request.POST:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT id, password FROM provider WHERE id = %s", [request.POST["user"]])
+            providers = cursor.fetchone()
+        if providers == None:
+            status = "Login failed, no such user. Please create an account."
+        else:
+            if providers[1] == request.POST["user_pass"]:
+                status = "Login successful."
+                return redirect('services', request.POST["user"])
+            else:
+                status = "Login failed, wrong password."
+                
+    context["status"] = status
+    return render(request,'app/login_provider.html', context)
 
 def login_req(request):
     return render(request,'app/login.php', context)
