@@ -22,6 +22,7 @@ import app.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('database', app.views.database, name='database'),
+    path('database_provider', app.views.database_provider, name='database_provider'),
     path('add', app.views.add, name='add'),
     path('add_provider', app.views.add_provider, name='add_provider'),
     path('view/<str:id>', app.views.view, name='view'),
