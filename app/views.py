@@ -27,7 +27,7 @@ def database_provider(request):
     if request.POST:
         if request.POST['action'] == 'delete':
             with connection.cursor() as cursor:
-                cursor.execute("DELETE FROM provider WHERE id = %s", [request.POST['id']])
+                cursor.execute("DELETE FROM provider WHERE id = %s", [request.POST['id_user']])
 
     ## Use raw query to get all objects
     with connection.cursor() as cursor:
@@ -97,7 +97,7 @@ def add_provider(request):
         ## Check if userid is already in the table
         with connection.cursor() as cursor:
 
-            cursor.execute("SELECT * FROM provider WHERE id = %s", [request.POST['id']])
+            cursor.execute("SELECT * FROM provider WHERE id = %s", [request.POST['id_user']])
             user = cursor.fetchone()
             ## No user with same id
             if user == None:
