@@ -77,8 +77,8 @@ def add(request):
             if user == None:
                 ##TODO: date validation
                 cursor.execute("INSERT INTO customer VALUES (%s, %s, %s, %s, %s, %s, %s)"
-                        , [request.POST['id'], request.POST['password'], request.POST['first_name'],
-                           request.POST['last_name'] , request.POST['gender'], request.POST['email_address'], request.POST['address'] ])
+                        , [request.POST['user'], request.POST['password'], request.POST['first_name'],
+                           request.POST['last_name'] , request.POST['gender'], request.POST['email'], request.POST['address'] ])
                 return redirect('database')    
             else:
                 status = 'User with ID %s already exists' % (request.POST['userid'])
