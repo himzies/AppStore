@@ -186,6 +186,9 @@ def test(request):
 def cleaning(request):
     return render(request,'app/cleaning.html')
 
+def tuition(request):
+    return render(request,'app/tuition.html')
+
 def login(request):
     context = {}
     status = ""
