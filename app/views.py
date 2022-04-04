@@ -71,7 +71,7 @@ def add(request):
         ## Check if userid is already in the table
         with connection.cursor() as cursor:
 
-            cursor.execute("SELECT * FROM customer WHERE id = %s", [request.POST['id']])
+            cursor.execute("SELECT * FROM customer WHERE id = %s", [request.POST['user']])
             user = cursor.fetchone()
             ## No user with same id
             if user == None:
@@ -97,7 +97,7 @@ def add_provider(request):
         ## Check if userid is already in the table
         with connection.cursor() as cursor:
 
-            cursor.execute("SELECT * FROM provider WHERE id = %s", [request.POST['id_user']])
+            cursor.execute("SELECT * FROM provider WHERE id = %s", [request.POST['user']])
             user = cursor.fetchone()
             ## No user with same id
             if user == None:
