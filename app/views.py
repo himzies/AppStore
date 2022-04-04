@@ -79,9 +79,9 @@ def add(request):
                 cursor.execute("INSERT INTO customer VALUES (%s, %s, %s, %s, %s, %s, %s)"
                         , [request.POST['user'], request.POST['password'], request.POST['first_name'],
                            request.POST['last_name'] , request.POST['gender'], request.POST['email'], request.POST['address'] ])
-                return redirect('database')    
+                return redirect('login')    
             else:
-                status = 'User with ID %s already exists' % (request.POST['userid'])
+                status = 'User with ID %s already exists' % (request.POST['user'])
 
 
     context['status'] = status
@@ -103,11 +103,11 @@ def add_provider(request):
             if user == None:
                 ##TODO: date validation
                 cursor.execute("INSERT INTO customer VALUES (%s, %s, %s, %s, %s, %s, %s)"
-                        , [request.POST['id'], request.POST['password'], request.POST['first_name'],
+                        , [request.POST['user'], request.POST['password'], request.POST['first_name'],
                            request.POST['last_name'] , request.POST['gender'], request.POST['email'], request.POST['expertise'], request.POST['address'] ])
-                return redirect('database')    
+                return redirect('login_provider')    
             else:
-                status = 'User with ID %s already exists' % (request.POST['userid'])
+                status = 'User with ID %s already exists' % (request.POST['user'])
 
 
     context['status'] = status
