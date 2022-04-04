@@ -183,6 +183,9 @@ def home(request):
 def test(request):
     return render(request,'app/test.html')
 
+def cleaning(request):
+    return render(request,'app/cleaning.html')
+
 def login(request):
     context = {}
     status = ""
