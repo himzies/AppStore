@@ -40,24 +40,29 @@
 </style>
 </head>
 <body>
-     <header>
+    <header>
     <nav class="navbar navbar-light" style="background-color: #5C7970;">
     <div class="container-fluid">
-    <a class="navbar-brand" href="#page-top" style="font-family: 'Lobster', cursive">Alfredo</a>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="login" style="color: black"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            <li><a href="add" style="color: black"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-        </ul>
+    <a class="navbar-brand" href="#page-top" style="font-family: 'Lobster', cursive">{{cust.2}}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Profile</a>
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="Services">Services</a>
+          <a class="nav-link" href="Services">What we offer</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+          </ul>
         </li>
       </ul>
     </div>
