@@ -42,8 +42,12 @@ CREATE TABLE IF NOT EXISTS tuition(
 	price DEC(16, 2) NOT NULL);
 
 CREATE TABLE IF NOT EXISTS transaction (
-	customer_id VARCHAR(16) NOT NULL,
-	provider_id VARCHAR(16) NOT NULL,
+	order_id int NOT NULL PRIMARY KEY,
+	customer_id VARCHAR(16),
+	provider_id VARCHAR(16),
 	cust_address VARCHAR(255) UNIQUE NOT NULL,
 	expertise VARCHAR(64) NOT NULL, 
-	price DEC(16, 2) NOT NULL);
+	price DEC(16, 2) NOT NULL
+	FOREIGN KEY (customer_id) REFERENCES customer (id),
+	FOREIGN KEY (provider_id) REFERENCES provider (id),
+);
