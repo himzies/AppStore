@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS customer (
 	last_name VARCHAR(64) NOT NULL,
 	gender VARCHAR(6) NOT NULL CHECK (gender IN ('Male', 'Female')),
 	email VARCHAR(64) UNIQUE NOT NULL,
-	address VARCHAR(255) UNIQUE NOT NULL,
+	address VARCHAR(255) NOT NULL,
 	PRIMARY KEY (id));
 
 CREATE TABLE IF NOT EXISTS provider (
