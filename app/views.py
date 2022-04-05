@@ -254,9 +254,8 @@ def job_req(request, id, expertise):
     if request.POST:
         if request.POST['action'] == 'transaction':
             with connection.cursor() as cursor:
-                cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %s)"
-                               , [id, request.POST['password'], customer[6],
-                                  expertise, request.POST['address']])
+                cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %d)"
+                               , [id, prov_id, customer[6], expertise, 10])
                 status = 'Transaction with %s successful' % (request.POST['userid'])
     
     return render(request,'app/job_req.html', {'prov': provider, 'cust': customer})
