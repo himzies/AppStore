@@ -262,26 +262,15 @@ def job_cat(request, id, service):
     return render(request,'app/job_cat.html', {'cat': category, 'cust': customer, 'serv': service})
 
 #Testing for transaction
-def transaction(request, id):
-    """Shows the main page"""
+def transaction(request, id, service, expertise, prov_id):
     context = {}
     status = ''
-
-    if request.POST:
-        if request.POST['action'] == 'transaction':
-            with connection.cursor() as cursor:
-                cursor.execute("SELECT * FROM customer WHERE id = %s", [request.POST['id']])
-                user = cursor.fetchone()
-                cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %s)"
-                               , [request.POST['id'], request.POST['password'], request.POST['first_name'],
-                                  request.POST['last_name'], request.POST['address']])
-                status = 'Transaction with %s successful' % (request.POST['userid'])
-        #with connection.cursor() as cursor:
-        #   cursor.execute("SELECT * FROM provider WHERE %s = person", [id])
-        #   serviceman = cursor.fetchall()
+    
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
+        customer = cursor.fetchone()
     if request.POST:
         if request.POST['action'] == 'transaction':
             with connection.cursor() as cursor:
                 cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %d)", [id, prov_id, customer[6], expertise, 10])
-    context["status"] = status
-    return render(request, "app/transaction.html", context)
+    return render(request, "app/transaction.html")
