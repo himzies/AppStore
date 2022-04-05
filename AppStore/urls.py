@@ -27,7 +27,6 @@ urlpatterns = [
     path('add_provider', app.views.add_provider, name='add_provider'),
     path('view/<str:id>', app.views.view, name='view'),
     path('edit/<str:id>', app.views.edit, name='edit'),
-    path('<str:id>/edit', app.views.edit, name='edit'),
     path('view_provider/<str:id>', app.views.view_provider, name='view_provider'),
     path('edit_provider/<str:id>', app.views.edit_provider, name='edit_provider'),    
     path('', app.views.home, name='home'),
