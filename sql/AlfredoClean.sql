@@ -4,8 +4,6 @@
 
 *******************/
 
-
-DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS customer;
 DROP TABLE IF EXISTS provider;
 DROP TABLE IF EXISTS job_category;
