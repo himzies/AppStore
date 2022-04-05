@@ -242,7 +242,7 @@ def services(request, id):
         category = cursor.fetchall()
     return render(request,'app/services.html', {'cust': customer, 'cat': category})
 
-def job_req(request, id, expertise):
+def job_req(request, id, service, expertise):
     context = {}
     status = ''
     with connection.cursor() as cursor:
