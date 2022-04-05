@@ -83,6 +83,7 @@
             Are you sure you want to continue?
             <br>
             <form method="post">
+                {% csrf_token %}
                 <button name="confirm" value="yes">Yes</button>
             </form>
         </center>
