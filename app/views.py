@@ -251,6 +251,13 @@ def job_req(request, id, expertise):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
         customer = cursor.fetchone()
+    if request.POST:
+        if request.POST['action'] == 'transaction':
+            with connection.cursor() as cursor:
+                cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %s)"
+                               , [id, request.POST['password'], customer[6],
+                                  expertise, request.POST['address']])
+                status = 'Transaction with %s successful' % (request.POST['userid'])
     
     return render(request,'app/job_req.html', {'prov': provider, 'cust': customer})
 
