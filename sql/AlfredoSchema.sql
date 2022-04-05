@@ -34,6 +34,6 @@ CREATE TABLE IF NOT EXISTS jobs (
 CREATE TABLE IF NOT EXISTS transaction (
 	customer_id VARCHAR(16) REFERENCES customer(id),
 	provider_id VARCHAR(16) REFERENCES provider(id),
-	cust_address VARCHAR(255) UNIQUE NOT NULL,
+	cust_address VARCHAR(255) NOT NULL,
 	expertise VARCHAR(64) NOT NULL, 
 	price DEC(16, 2) NOT NULL);
