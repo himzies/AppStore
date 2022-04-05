@@ -183,15 +183,6 @@ def home(request):
 def test(request):
     return render(request,'app/test.html')
 
-def cleaning(request):
-    return render(request,'app/cleaning.html')
-
-def tuition(request):
-    return render(request,'app/tuition.html')
-
-def petcare(request):
-    return render(request,'app/petcare.html')
-
 def login(request):
     context = {}
     status = ""
@@ -253,7 +244,7 @@ def job_req(request, id, service, expertise):
 
 def job_cat(request, id, service):
     with connection.cursor() as cursor:
-        cursor.execute('SELECT * FROM ' + service.lower().replace(" ", "_"))
+        cursor.execute('SELECT * FROM jobs WHERE category = ' + service.lower().replace(" ", "_"))
         category = cursor.fetchall()
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
@@ -269,8 +260,14 @@ def transaction(request, id, service, expertise, prov_id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
         customer = cursor.fetchone()
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM provider WHERE id = %s", [prov_id])
+        provider = cursor.fetchone()
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM jobs WHERE name = %s", [expertise])
+        job_title = cursor.fetchone()
     if request.POST:
         if request.POST['action'] == 'transaction':
             with connection.cursor() as cursor:
-                cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %d)", [id, prov_id, customer[6], expertise, 10])
+                cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %d)", [id, prov_id, customer[6], expertise, job_title[2])
     return render(request, "app/transaction.html")
