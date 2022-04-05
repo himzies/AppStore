@@ -243,20 +243,12 @@ def services(request, id):
     return render(request,'app/services.html', {'cust': customer, 'cat': category})
 
 def job_req(request, id, service, expertise):
-    context = {}
-    status = ''
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM provider WHERE %s = expertise", [expertise])
         provider = cursor.fetchall()
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
         customer = cursor.fetchone()
-    if request.POST:
-        if request.POST['action'] == 'transaction':
-            with connection.cursor() as cursor:
-                cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %d)", [id, prov_id, customer[6], expertise, 10])
-                status = 'Transaction with %s successful' % (request.POST['prov_id'])
-    context['status'] = status
     return render(request,'app/job_req.html', {'prov': provider, 'cust': customer}, context)
 
 def job_cat(request, id, service):
@@ -287,6 +279,9 @@ def transaction(request, id):
         #with connection.cursor() as cursor:
         #   cursor.execute("SELECT * FROM provider WHERE %s = person", [id])
         #   serviceman = cursor.fetchall()
-        
+    if request.POST:
+        if request.POST['action'] == 'transaction':
+            with connection.cursor() as cursor:
+                cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %d)", [id, prov_id, customer[6], expertise, 10])
     context["status"] = status
     return render(request, "app/transaction.html", context)
