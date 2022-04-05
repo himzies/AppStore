@@ -34,9 +34,9 @@ urlpatterns = [
     path('login/', app.views.login, name='login'),
     path('login_provider/', app.views.login_provider, name='login_provider'),
     path('<str:id>/services/', app.views.services, name='services'),
-    path('<str:id>/job_cat/<str:service>/', app.views.job_cat, name='job_cat'),
-    path('<str:id>/job_cat/<str:service>/job_req/<str:expertise>/', app.views.job_req, name='job_req'),
+    path('<str:id>/services/job_cat/<str:service>/', app.views.job_cat, name='job_cat'),
+    path('<str:id>/services/job_cat/<str:service>/job_req/<str:expertise>/', app.views.job_req, name='job_req'),
     path('test/', app.views.test, name='test'),
     #Testing for transaction
-    path('<str:id>/job_cat/<str:service>/job_req/<str:expertise>/transaction/<str:prov_id>/', app.views.transaction, name='transaction')
+    path('<str:id>/services/job_cat/<str:service>/job_req/<str:expertise>/transaction/<str:prov_id>/', app.views.transaction, name='transaction')
 ]
