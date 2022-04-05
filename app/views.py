@@ -229,7 +229,7 @@ def services(request, id):
         cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
         customer = cursor.fetchone()
     with connection.cursor() as cursor:
-        cursor.execute("SELECT UNIQUE* FROM jobs")
+        cursor.execute("SELECT DISTINCT category FROM jobs GROUP BY category")
         category = cursor.fetchall()
     return render(request,'app/services.html', {'cust': customer, 'cat': category})
 
