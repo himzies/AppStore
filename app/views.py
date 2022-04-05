@@ -272,7 +272,7 @@ def job_cat(request, id, service):
     return render(request,'app/job_cat.html', {'cat': category, 'cust': customer, 'serv': service})
 
 #Testing for transaction
-def transaction(request, id, person):
+def transaction(request, id):
     """Shows the main page"""
     context = {}
     status = ''
