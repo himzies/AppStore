@@ -270,4 +270,5 @@ def transaction(request, id, service, expertise, prov_id):
         if request.POST['confirm'] == 'yes':
             with connection.cursor() as cursor:
                 cursor.execute("INSERT INTO transaction VALUES (%s, %s, %s, %s, %s)", [id, prov_id, customer[6], expertise, job_title[2]])
+                return redirect(services, id)
     return render(request, "app/transaction.html", {'job': job_title, 'cust': customer, 'prov': provider})
