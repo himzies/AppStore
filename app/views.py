@@ -273,6 +273,13 @@ def services(request, id):
         top_provider = cursor.fetchall()
     return render(request,'app/services.html', {'cust': customer, 'cat': category, 'top_p': top_provider})
 
+def history(request, id):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT p.first_name, p.last_name, t.expertise, t.price FROM transaction t,\
+                        provider p WHERE t.customer_id = %s AND t.provider_id = p.id", [id])
+        history = cursor.fetchall()
+    return render(request, 'app/history.html', {'hist': history})
+
 def job_req(request, id, service, expertise):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM provider WHERE %s = expertise", [expertise])
