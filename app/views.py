@@ -102,9 +102,9 @@ def add_provider(request):
             ## No user with same id
             if user == None:
                 ##TODO: date validation
-                cursor.execute("INSERT INTO provider VALUES (%s, %s, %s, %s, %s, %s, %s)"
-                        , [request.POST['user'], request.POST['password'], request.POST['first_name'],
-                           request.POST['last_name'] , request.POST['gender'], request.POST['email'], request.POST['expertise'], request.POST['address'] ])
+                cursor.execute("INSERT INTO provider VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+                        , [request.POST['user'], request.POST['password'], request.POST['first_name'], request.POST['last_name'],
+                           request.POST['gender'], request.POST['email'], request.POST['expertise'], request.POST['address'] ])
                 return redirect('login_provider')    
             else:
                 status = 'User with ID %s already exists' % (request.POST['user'])
