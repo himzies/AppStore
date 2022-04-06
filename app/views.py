@@ -88,7 +88,7 @@ def add(request):
  
     return render(request, "app/add.html", context)
 
-def add_provider(request):
+def add_provider1(request):
     """Shows the main page"""
     context = {}
     status = ''
@@ -113,6 +113,33 @@ def add_provider(request):
     context['status'] = status
  
     return render(request, "app/add_provider.html", context)
+
+def add_provider2(request, id):
+    """Shows the main page"""
+    context = {}
+    status = ''
+
+    if request.POST:
+        ## Check if userid is already in the table
+        with connection.cursor() as cursor:
+
+            cursor.execute("SELECT * FROM provider WHERE id = %s", [request.POST['user']])
+            user = cursor.fetchone()
+            ## No user with same id
+            if user == None:
+                ##TODO: date validation
+                cursor.execute("INSERT INTO provider VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+                        , [request.POST['user'], request.POST['password'], request.POST['first_name'], request.POST['last_name'],
+                           request.POST['gender'], request.POST['email'], request.POST['expertise'], request.POST['address'] ])
+                return redirect('login_provider')    
+            else:
+                status = 'User with ID %s already exists' % (request.POST['user'])
+
+
+    context['status'] = status
+ 
+    return render(request, "app/add_provider.html", context)
+
 
 # Create your views here.
 def edit(request, id):
