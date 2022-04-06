@@ -14,7 +14,7 @@
         font-family: 'Quicksand', sans-serif;
         background-color: #A2B8A3;
     }
-      div {
+      div.a {
         margin: auto;
         width: 60%;
         border: 3px solid black;
@@ -32,6 +32,7 @@
         <!-- Security token by Django -->
         {% csrf_token %}
         <!-- form -->
+        <div class = "a">
         <div id="div_id_user" class="control-group"> <label for="id_user" class="control-label requiredField">
         User ID<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="user" maxlength="64" class="textinput textInput" required="" id="id_user"> </div> </div> <div id="div_id_password" class="control-group"> <label for="id_password" class="control-label requiredField">
         Password<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="password" maxlength="64" class="textinput textInput" required="" id="id_password"> </div> </div> <div id="div_id_first_name" class="control-group"> <label for="id_first_name" class="control-label requiredField">
@@ -41,7 +42,7 @@
         Email Address<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="email" maxlength="64" class="textinput textInput" required="" id="id_email"> </div> </div> <div id="div_id_expertise" class="control-group"> <label for="id_expertise" class="control-label requiredField">
         Expertise<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="expertise" maxlength="64" class="textinput textInput" required="" id="id_expertise"> </div> </div> <div id="div_id_address" class="control-group"> <label for="id_address" class="control-label requiredField">
         Address<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="address" maxlength="64" class="textinput textInput" required="" id="id_address"> </div> </div>
-
+        </div>
         <br>
         <button type="submit" value="Add">Add</button>
     </form>
