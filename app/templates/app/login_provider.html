@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Login</title>
+    <title>Provider Login</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@
 <body>
 
 <a href="/">Back to Home</a>
-<h1>Login Form</h1>
+<h1>Login Form for Provider</h1>
   <div>
   <p style="color:red;font-weight:bold">{{ status|safe }}</p>
   <form method="post">
@@ -37,7 +37,7 @@
     <input type="password" id="user_pass" name="user_pass"><br><br>
     <button type="submit" value="login">Login</button>
   </form>
-  <p> Not a member yet? <a href="add_provider">Register as Provider Here</a> </p>
+  <p> Not a provider yet? <a href="add_provider">Register as Provider Here</a> </p>
   </div>
 </body>
 </html>
