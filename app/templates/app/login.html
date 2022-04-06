@@ -15,20 +15,27 @@
         font-family: 'Quicksand', sans-serif;
         background-color: #A2B8A3;
     }
-      div {
+      div.a {
         margin: auto;
         width: 60%;
         border: 3px solid black;
         padding: 10px;
         text-align: center;
     }
+      div.right {
+        text-align: right;
+        float: right;
+    }
     </style>
   </head>
 <body>
 
 <a href="/">Back to Home</a>
+  <div class="right">
+    <a href="https://slowbrosql.herokuapp.com/login_provider">Login as Provider</a>
+    </div>
 <h1>Login Form</h1>
-  <div>
+  <div class="a">
   <p style="color:red;font-weight:bold">{{ status|safe }}</p>
   <form method="post">
     {% csrf_token %}
