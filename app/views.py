@@ -263,7 +263,7 @@ def job_req(request, id, service, expertise):
                         AND t.customer_id = %s\
                         GROUP BY t.provider_id\
                         ORDER BY COUNT(*) DESC) AS s\
-                        ON s.id = t.provider_id\
+                        ON p.id = s.provider_id\
                         WHERE p.expertise = 'Housekeeping'", [expertise, id])
         provider = cursor.fetchall()
     with connection.cursor() as cursor:
