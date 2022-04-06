@@ -144,7 +144,7 @@ def edit(request, id):
     context["obj"] = obj
     context["status"] = status
  
-    return render(request, "edit.html", context)
+    return render(request, "app/edit.html", context)
 
 def edit_provider(request, id):
     """Shows the main page"""
