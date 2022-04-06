@@ -35,6 +35,7 @@ urlpatterns = [
     path('login/', app.views.login, name='login'),
     path('login_provider/', app.views.login_provider, name='login_provider'),
     path('<str:id>/services', app.views.services, name='services'),
+    path('<str:id>/history', app.views.history, name='history'),
     path('<str:id>/job_cat/<str:service>/', app.views.job_cat, name='job_cat'),
     path('<str:id>/job_cat/<str:service>/job_req/<str:expertise>/', app.views.job_req, name='job_req'),
     path('test/', app.views.test, name='test'),
