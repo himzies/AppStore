@@ -33,13 +33,10 @@ urlpatterns = [
     path('', app.views.home, name='home'),
     path('login/', app.views.login, name='login'),
     path('login_provider/', app.views.login_provider, name='login_provider'),
-    path('<str:id>/services/', app.views.services, name='services'),
-    path('<str:id>/services/job_cat/<str:service>/', app.views.job_cat, name='job_cat'),
-    path('<str:id>/services/job_cat/<str:service>/job_req/<str:expertise>/', app.views.job_req, name='job_req'),
+    path('<str:id>/services', app.views.services, name='services'),
+    path('<str:id>/job_cat/<str:service>/', app.views.job_cat, name='job_cat'),
+    path('<str:id>/job_cat/<str:service>/job_req/<str:expertise>/', app.views.job_req, name='job_req'),
     path('test/', app.views.test, name='test'),
-    path('cleaning/', app.views.cleaning, name='cleaning'),
-    path('tuition/', app.views.tuition, name='tuition'),
-    path('petcare/', app.views.petcare, name='petcare'),
     #Testing for transaction
-    path('<str:id>/services/job_cat/<str:service>/job_req/<str:expertise>/transaction/<str:prov_id>/', app.views.transaction, name='transaction')
+    path('<str:id>/job_cat/<str:service>/job_req/<str:expertise>/transaction/<str:prov_id>/', app.views.transaction, name='transaction')
 ]
