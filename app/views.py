@@ -240,7 +240,11 @@ def services(request, id):
     with connection.cursor() as cursor:
         cursor.execute("SELECT DISTINCT category FROM jobs ORDER BY category")
         category = cursor.fetchall()
-    return render(request,'app/services.html', {'cust': customer, 'cat': category})
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT p.first_name, p.last_name, SUM(t.price) FROM transaction t, provider p WHERE t.provider_id = p.id " +
+                       "GROUP BY p.first_name, p.last_name ORDER BY SUM(t.price) DESC FETCH FIRST 3 ROWS WITH TIES")
+        top_provider = cursor.fetchall()
+    return render(request,'app/services.html', {'cust': customer, 'cat': category, 'top_p': top_provider})
 
 def job_req(request, id, service, expertise):
     with connection.cursor() as cursor:
