@@ -255,16 +255,17 @@ def history(request, id):
 
 def job_req(request, id, service, expertise):
     with connection.cursor() as cursor:
-        cursor.execute("SELECT p.id, p.first_name, p.last_name, p.gender\
+        cursor.execute("SELECT p.id, p.first_name, p.last_name, p.gender, coalesce(jobs1, 0) as jobs2\
                         FROM provider p\
-                        LEFT JOIN (SELECT t.provider_id, COUNT(*)\
+                        LEFT JOIN (SELECT t.provider_id, COUNT(*) as jobs1\
                         FROM transaction t\
                         WHERE t.expertise = %s\
                         AND t.customer_id = %s\
                         GROUP BY t.provider_id\
                         ORDER BY COUNT(*) DESC) AS s\
                         ON p.id = s.provider_id\
-                        WHERE p.expertise = 'Housekeeping'", [expertise, id])
+                        WHERE p.expertise = 'Housekeeping'\
+                        ORDER BY jobs2 DESC", [expertise, id])
         provider = cursor.fetchall()
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
