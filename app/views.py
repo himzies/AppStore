@@ -251,7 +251,7 @@ def history(request, id):
         cursor.execute("SELECT p.first_name, p.last_name, t.expertise, t.price FROM transaction t,\
                         provider p WHERE t.customer_id = %s AND t.provider_id = p.id", [id])
         history = cursor.fetchall()
-    return render(request, 'app/history.html', {'hist': history})
+    return render(request, 'app/history.html', {'hist': history, 'cust': id})
 
 def job_req(request, id, service, expertise):
     with connection.cursor() as cursor:
