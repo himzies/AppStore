@@ -248,7 +248,10 @@ def services(request, id):
 
 def prov_home(request, id):
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM transaction WHERE provider_id = %s", [id])
+        cursor.execute("SELECT c.first_mname, c.last_name, t.cust_address, t.expertise, t.price\
+                        FROM transaction t, customer c\
+                        WHERE t.provider_id = %s\
+                        AND c.id = t.customer", [id])
         transaction = cursor.fetchall()
     return render(request,'app/prov_home.html', {'trans': transaction})
 
