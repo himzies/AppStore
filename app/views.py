@@ -251,7 +251,7 @@ def prov_home(request, id):
         cursor.execute("SELECT c.first_name, c.last_name, t.cust_address, t.expertise, t.price\
                         FROM transaction t, customer c\
                         WHERE t.provider_id = %s\
-                        AND c.id = t.customer", [id])
+                        AND c.id = t.customer_id", [id])
         transaction = cursor.fetchall()
     return render(request,'app/prov_home.html', {'trans': transaction})
 
