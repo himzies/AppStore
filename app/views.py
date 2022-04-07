@@ -270,7 +270,7 @@ def job_req(request, id, service, expertise):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM customer WHERE id = %s", [id])
         customer = cursor.fetchone()
-    return render(request,'app/job_req.html', {'prov': provider, 'cust': customer})
+    return render(request,'app/job_req.html', {'prov': provider, 'cust': customer, 'exp': expertise})
 
 def job_cat(request, id, service):
     with connection.cursor() as cursor:
