@@ -1,6 +1,34 @@
 <html>
+<head>
+    <title>Register</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/himzies/AppStore/master/app/static/app/favicon.ico">
+    <style>
+      h1{
+        font-family: 'Lobster', cursive;
+        text-align: center;
+      }
+      body {
+        font-family: 'Quicksand', sans-serif;
+        background-color: #A2B8A3;
+    }
+      div.a {
+        margin: auto;
+        width: 60%;
+        border: 3px solid black;
+        padding: 10px;
+        text-align: center;
+    }
+      div.right {
+        text-align: right;
+        float: right;
+    }
+    </style>
 <body>
-    <h2>Edit {{obj.0}}</h2>
+    <h1>Edit Profile for {{obj.0}}</h1>
     <input type="button" value="Back" onclick="history.back()">
 
     <p style="color:red">{{ status|safe }}</p>
@@ -10,6 +38,7 @@
         <!-- Security token by Django -->
         {% csrf_token %}
         <!-- form -->
+        <div class="a">
         <div id="div_id_user" class="control-group"> <label for="id_user" class="control-label requiredField">
         Password<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="password" value="{{obj.1}}" maxlength="64" class="textinput textInput" required="" id="id_password"> </div> </div> <div id="div_id_first_name" class="control-group"> <label for="id_first_name" class="control-label requiredField">
         First Name<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="first_name" value="{{obj.2}}" maxlength="64" class="textinput textInput"required="" id="id_first_name"> </div> </div> <div id="div_id_last_name" class="control-group"> <label for="id_last_name" class="control-label requiredField">
@@ -17,7 +46,8 @@
         Gender<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="gender" value="{{obj.4}}" maxlength="64" class="textinput textInput" required="" id="id_gender"> </div> </div> <div id="div_id_email" class="control-group"> <label for="id_email" class="control-label requiredField">
         Email Address<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="email" value="{{obj.5}}" maxlength="64" class="textinput textInput" required="" id="id_email"> </div> </div> <div id="div_id_address" class="control-group"> <label for="id_address" class="control-label requiredField">
         Address<span class="asteriskField">*</span> </label> <div class="controls"> <input type="text" name="address" value="{{obj.6}}" maxlength="64" class="textinput textInput" required="" id="id_address"> </div> </div>
-        <br>
+        </div>
+            <br>
         <button type="submit" value="Update">Update</button>
     </form>
 </body>
