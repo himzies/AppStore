@@ -248,7 +248,7 @@ def services(request, id):
 
 def prov_home(request, id):
     with connection.cursor() as cursor:
-        cursor.execute("SELECT c.first_mname, c.last_name, t.cust_address, t.expertise, t.price\
+        cursor.execute("SELECT c.first_name, c.last_name, t.cust_address, t.expertise, t.price\
                         FROM transaction t, customer c\
                         WHERE t.provider_id = %s\
                         AND c.id = t.customer", [id])
