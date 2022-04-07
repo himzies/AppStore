@@ -223,7 +223,7 @@ def login_provider(request):
         else:
             if providers[1] == request.POST["user_pass"]:
                 status = "Login successful."
-                return redirect('services', request.POST["user"])
+                return redirect('prov_home', request.POST["user"])
             else:
                 status = "Login failed, wrong password."
                 
@@ -245,6 +245,12 @@ def services(request, id):
                        "GROUP BY p.first_name, p.last_name ORDER BY SUM(t.price) DESC FETCH FIRST 3 ROWS WITH TIES")
         top_provider = cursor.fetchall()
     return render(request,'app/services.html', {'cust': customer, 'cat': category, 'top_p': top_provider})
+
+def prov_home(request, id):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM transaction WHERE provider_id = %s", [id])
+        transaction = cursor.fetchall()
+    return render(request,'app/prov_home.html', {'trans': transaction})
 
 def history(request, id):
     with connection.cursor() as cursor:
