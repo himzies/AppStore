@@ -41,6 +41,5 @@ urlpatterns = [
     path('cleaning/', app.views.cleaning, name='cleaning'),
     path('tuition/', app.views.tuition, name='tuition'),
     path('petcare/', app.views.petcare, name='petcare'),
-    #Testing for transaction
     path('<str:id>/job_cat/<str:service>/job_req/<str:expertise>/transaction/<str:prov_id>/', app.views.transaction, name='transaction')
 ]
